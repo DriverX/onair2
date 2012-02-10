@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="windows-1251">
+	<title>onAir2</title>
+</head>
+<body>
+
+<style type="text/css">
+.onair {
+	width: 100%;
+	font: normal 12px arial, sans-serif;
+	text-align: left;
+	}
+.onair__loading {
+	background: #fff url(http://go.imgsmail.ru/img/ajax_loader_hor.gif) center center no-repeat;
+	zoom: 1;
+	}
+.onair__header {
+	position: relative;
+	height: 29px;
+	overflow: hidden;
+	background: #165696 url(http://go.imgsmail.ru/img/slot/onair/header_grad.gif) 0 0 repeat-x;
+	
+	-webkit-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+	}	
+.onair__logo {
+	float: right;
+	padding: 7px 10px 0;
+	width: 120px;
+	height: 22px;
+	}
+.onair__logo__img {
+	border: 0;
+	vertical-align: middle;
+	}
+.onair__header__title {
+	float: left;
+	padding: 7px 10px 0;
+	height: 22px;
+	}
+.onair__header__title__text {
+	color: #fff;
+	font-size: 14px;
+	line-height: 14px;
+	white-space: nowrap;
+	}
+.onair__body {
+	border: 1px solid #EFEFEF;
+	border-top: 0;
+	overflow: hidden;
+	background: #fff;
+	
+	-webkit-border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+	}
+.onair__list__wrapper {
+	width: 100%;
+	margin-bottom: -1px;
+	}
+.onair__list {
+	margin: 0;
+	padding: 0;
+	}
+.onair__item {
+	display: block;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #EFEFEF;
+	height: 29px;
+	white-space: nowrap;
+	}
+.onair__item__link,
+.onair__item__link:active,
+.onair__item__link:hover,
+.onair__item__link:visited {
+	position: relative;
+	display: block;
+	padding: 0 10px;
+	height: 29px;
+	overflow: hidden;
+	background-color: #fff;
+	color: #0657A5;
+	line-height: 29px;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	}
+.onair__item__link:hover {
+	background-color: #F5F5F5;
+	}
+</style>
+<div id="onair" class="onair" style="display: none;">
+	<div class="onair__header">
+		<div class="onair__header__title">
+			<span class="onair__header__title__text">
+				сейчас ищут
+			</span>
+		</div>
+		<div class="onair__logo">
+			<a
+				href="http://go.mail.ru"
+				class="onair__logo__link"
+				title="перейти на go.mail.ru"
+				><img
+					class="onair__logo__img"
+					src="http://go.imgsmail.ru/img/mail/logoback120.png"
+					width="120"
+					height="18"
+					alt="Поиск@Mail.Ru"
+			></a>
+		</div>
+	</div>
+	<div id="onair__body" class="onair__body"><!-- items inserted here --></div>
+</div>
+
+<script type="text/javascript" src="../lib/onair2.js"></script>
+
+<script type="text/javascript">//<![CDATA[
+if( typeof onAir2 !== "undefined" ) {
+	onAir2.ready(function() {
+		var block = document.getElementById( "onair" );
+		if( block ) {
+			block.style.display = "";
+			onAir2.slotInstance = new onAir2({
+				container: "onair__body",
+				items: "http://go.mail.ru/onair_querylist.html",
+				linkPattern: "http://r.mail.ru/clb%ID/go.mail.ru/search?q={searchTerms}&fr=lb",
+				charset: "windows-1251",
+				uniqueName: "onAirSlot",
+				visibleItems: 9,
+				blockClass: "onair__list__wrapper",
+				listClass: "onair__list",
+				itemClass: "onair__item",
+				linkClass: "onair__item__link",
+				loadingClass: "onair__loading"
+			});
+			onAir2.slotInstance.draw();
+		}
+	});
+}
+//]]></script>
+
+
+
+</body>
+</html>
